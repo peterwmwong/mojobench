@@ -2,7 +2,7 @@ A quick look at the Mojo Tail Call Optimization and Elimination performance clai
 
 > Note: Modular seems to have revised the post's benchmark, [originally](https://web.archive.org/web/20240212205752/https://www.modular.com/blog/mojo-vs-rust-is-mojo-faster-than-rust) a `factorial()` function.
 
-> Disclaimer: I'm not planning on maintaining/updating this repo. I'm personally not invested in either Rust or Mojo! This is just quick, slapped together comparison that works on my Apple M3 with [Mojo](https://developer.modular.com/download), [Rust Nightly](https://www.rust-lang.org/tools/install) and XCode (for disassembly) installed.
+> Disclaimer: I'm not planning on maintaining/updating this repo. I'm personally not invested in either Rust or Mojo! This is just quick, slapped together comparison that works on my Apple M3 with [Mojo](https://developer.modular.com/download), [Rust Nightly](https://www.rust-lang.org/tools/install), [hyperfine](https://github.com/sharkdp/hyperfine?tab=readme-ov-file#with-cargo-linux-macos-windows) and XCode (for disassembly) installed.
 
 ## Benchmark
 
