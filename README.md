@@ -1,5 +1,9 @@
 Comparing Rust and Mojo compiler's ability to optimize away store/loads.
 
+https://github.com/peterwmwong/mojobench/blob/f64b2081d3e55d37f2fff1e83b670fd23504ec71/src/bin/store-load-rust.rs#L2-L6
+
+https://github.com/peterwmwong/mojobench/blob/f64b2081d3e55d37f2fff1e83b670fd23504ec71/src/store-load-mojo.mojo#L3-L6
+
 Originally benchmarking the TCO/TCE performance claims in [Mojo vs. Rust: is Mojo 🔥 faster than Rust 🦀 ?](https://www.modular.com/blog/mojo-vs-rust-is-mojo-faster-than-rust) ([archive link](https://web.archive.org/web/20240215183318/https://www.modular.com/blog/mojo-vs-rust-is-mojo-faster-than-rust)) (see [`main` branch](https://github.com/peterwmwong/mojobench/tree/main)).
 
 > Disclaimer: I'm not planning on maintaining/updating this repo. I'm personally not invested in either Rust or Mojo! This is just quick, slapped together comparison that works on my Apple M3.
