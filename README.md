@@ -42,35 +42,22 @@ commit-date: 2024-02-14
 host: aarch64-apple-darwin
 release: 1.78.0-nightly
 LLVM version: 18.1.0
-   Compiling mojobench v0.1.0 (/Users/pwong/projects/mojobench)
-    Finished `release` profile [optimized] target(s) in 0.09s
+    Finished `release` profile [optimized] target(s) in 0.02s
 Benchmark 1: ./recursive-mojo
-  Time (mean ± σ):     811.7 µs ±  83.5 µs    [User: 350.2 µs, System: 281.1 µs]
-  Range (min … max):   690.0 µs … 1468.6 µs    3179 runs
+  Time (mean ± σ):     780.8 µs ±  45.2 µs    [User: 334.2 µs, System: 272.6 µs]
+  Range (min … max):   711.4 µs … 1086.6 µs    3818 runs
  
   Warning: Statistical outliers were detected. Consider re-running this benchmark on a quiet system without any interferences from other programs. It might help to use the '--warmup' or '--prepare' options.
  
 Benchmark 2: target/release/recursive-rust
-  Time (mean ± σ):     755.7 µs ±  62.9 µs    [User: 311.5 µs, System: 269.3 µs]
-  Range (min … max):   658.4 µs … 1474.8 µs    2836 runs
+  Time (mean ± σ):     752.3 µs ±  52.6 µs    [User: 303.0 µs, System: 272.8 µs]
+  Range (min … max):   681.2 µs … 1588.8 µs    2978 runs
  
-  Warning: Statistical outliers were detected. Consider re-running this benchmark on a quiet system without any interferences from other programs. It might help to use the '--warmup' or '--prepare' options.
- 
-Benchmark 3: target/release/recursive-rust-vec_with_capacity
-  Time (mean ± σ):     256.2 ms ±   1.2 ms    [User: 253.6 ms, System: 0.9 ms]
-  Range (min … max):   254.9 ms … 258.4 ms    11 runs
- 
-Benchmark 4: target/release/recursive-rust-no_main
-  Time (mean ± σ):     577.8 µs ±  72.6 µs    [User: 154.3 µs, System: 251.9 µs]
-  Range (min … max):   484.8 µs … 1265.9 µs    5460 runs
- 
-  Warning: Statistical outliers were detected. Consider re-running this benchmark on a quiet system without any interferences from other programs. It might help to use the '--warmup' or '--prepare' options.
+  Warning: The first benchmarking run for this command was significantly slower than the rest (1.0 ms). This could be caused by (filesystem) caches that were not filled until after the first run. You are already using the '--warmup' option which helps to fill these caches before the actual benchmark. You can either try to increase the warmup count further or re-run this benchmark on a quiet system in case it was a random outlier. Alternatively, consider using the '--prepare' option to clear the caches before each timing run.
  
 Summary
-  target/release/recursive-rust-no_main ran
-    1.31 ± 0.20 times faster than target/release/recursive-rust
-    1.40 ± 0.23 times faster than ./recursive-mojo
-  443.47 ± 55.75 times faster than target/release/recursive-rust-vec_with_capacity
+  target/release/recursive-rust ran
+    1.04 ± 0.09 times faster than ./recursive-mojo
 ```
 
 ## Example disassembly for my machine

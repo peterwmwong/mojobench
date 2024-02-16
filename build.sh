@@ -18,14 +18,10 @@ cargo build --release
 mkdir -p disasm
 disasm ./recursive-mojo
 disasm target/release/recursive-rust
-disasm target/release/recursive-rust-no_main disasm-rust-no_main.txt
-disasm target/release/recursive-rust-vec_with_capacity
 
 # Benchmark
 hyperfine                                                                                 \
     -N          `# Suggested option when command takes less than 5 ms`                    \
     --warmup=16 `# Suggested option when first run is significantly slower than the rest` \
     ./recursive-mojo                                                                      \
-    target/release/recursive-rust                                                         \
-    target/release/recursive-rust-vec_with_capacity                                       \
-    target/release/recursive-rust-no_main
+    target/release/recursive-rust
