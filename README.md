@@ -6,14 +6,17 @@ A quick look at the Mojo Tail Call Optimization and Elimination performance clai
 
 ## Benchmark
 
-- [Mojo](./src/recursive-mojo.mojo)
-- [Rust](./src/bin/recursive-rust.rs)
-- [Rust using Vec::with_capacity()](./src/bin/recursive-rust-vec_with_capacity.rs)
-- [Rust min sized binary](./src/bin/recursive-rust-no_main.rs)
-  - Just threw this in as some of my projects use `#![no_main]` to reduce the binary size and startup time
+https://github.com/peterwmwong/mojobench/blob/9ff9b443b61362bb8fb882a716bd6f0fd12a5ddb/src/recursive-mojo.mojo#L1-L7
+
+https://github.com/peterwmwong/mojobench/blob/9ff9b443b61362bb8fb882a716bd6f0fd12a5ddb/src/bin/recursive-rust.rs#L1-L16
+
+https://github.com/peterwmwong/mojobench/blob/9ff9b443b61362bb8fb882a716bd6f0fd12a5ddb/src/bin/recursive-rust-vec_with_capacity.rs#L1-L16
+
+https://github.com/peterwmwong/mojobench/blob/9ff9b443b61362bb8fb882a716bd6f0fd12a5ddb/src/bin/recursive-rust-no_main.rs#L1-L19
+- Just threw this in as some of my projects use `#![no_main]` to reduce the binary size and startup time
   - Reading the disassembly is waayyyy easier, I wish Mojo had something similar.
   - More info: [johnthagen/min-sized-rust](https://github.com/johnthagen/min-sized-rust?tab=readme-ov-file#remove-corefmt-with-no_main-and-careful-usage-of-libstd)
-
+  
 ## Usage (terminal)
 
 > ./build.sh
