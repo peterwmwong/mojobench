@@ -1,18 +1,20 @@
-A quick look at the Mojo Tail Call Optimization and Elimination performance claims in [Mojo vs. Rust: is Mojo 🔥 faster than Rust 🦀 ?](https://www.modular.com/blog/mojo-vs-rust-is-mojo-faster-than-rust) ([archive link](https://web.archive.org/web/20240215183318/https://www.modular.com/blog/mojo-vs-rust-is-mojo-faster-than-rust))
+Comparing Rust and Mojo compiler's ability to optimize away store/loads.
 
-> Note: Modular seems to have revised the post's benchmark, [originally](https://web.archive.org/web/20240212205752/https://www.modular.com/blog/mojo-vs-rust-is-mojo-faster-than-rust) a `factorial()` function.
+Originally benchmarking the TCO/TCE performance claims in [Mojo vs. Rust: is Mojo 🔥 faster than Rust 🦀 ?](https://www.modular.com/blog/mojo-vs-rust-is-mojo-faster-than-rust) ([archive link](https://web.archive.org/web/20240215183318/https://www.modular.com/blog/mojo-vs-rust-is-mojo-faster-than-rust)) (see [`main` branch](https://github.com/peterwmwong/mojobench/tree/main)).
 
-> Disclaimer: I'm not planning on maintaining/updating this repo. I'm personally not invested in either Rust or Mojo! This is just quick, slapped together comparison that works on my Apple M3 with [Mojo](https://developer.modular.com/download), [Rust Nightly](https://www.rust-lang.org/tools/install), [hyperfine](https://github.com/sharkdp/hyperfine?tab=readme-ov-file#with-cargo-linux-macos-windows) and XCode (for disassembly) installed.
+> Disclaimer: I'm not planning on maintaining/updating this repo. I'm personally not invested in either Rust or Mojo! This is just quick, slapped together comparison that works on my Apple M3.
+
+## Setup
+
+- [Mojo](https://developer.modular.com/download)
+- [Rust Nightly](https://www.rust-lang.org/tools/install)
+- [hyperfine](https://github.com/sharkdp/hyperfine?tab=readme-ov-file#with-cargo-linux-macos-windows)
+- XCode (for generating disassembly)
 
 ## Benchmark
 
-- [Mojo](./src/recursive-mojo.mojo)
-- [Rust](./src/bin/recursive-rust.rs)
-- [Rust using Vec::with_capacity()](./src/bin/recursive-rust-vec_with_capacity.rs)
-- [Rust min sized binary](./src/bin/recursive-rust-no_main.rs)
-  - Just threw this in as some of my projects use `#![no_main]` to reduce the binary size and startup time
-  - Reading the disassembly is waayyyy easier, I wish Mojo had something similar.
-  - More info: [johnthagen/min-sized-rust](https://github.com/johnthagen/min-sized-rust?tab=readme-ov-file#remove-corefmt-with-no_main-and-careful-usage-of-libstd)
+- [Mojo](./src/store-load-mojo.mojo)
+- [Rust](./src/bin/store-load-rust.rs)
 
 ## Usage (terminal)
 
@@ -42,27 +44,25 @@ commit-date: 2024-02-14
 host: aarch64-apple-darwin
 release: 1.78.0-nightly
 LLVM version: 18.1.0
-    Finished `release` profile [optimized] target(s) in 0.02s
-Benchmark 1: ./recursive-mojo
-  Time (mean ± σ):     780.8 µs ±  45.2 µs    [User: 334.2 µs, System: 272.6 µs]
-  Range (min … max):   711.4 µs … 1086.6 µs    3818 runs
+    Finished `release` profile [optimized] target(s) in 0.00s
+Benchmark 1: ./store-load-mojo
+  Time (mean ± σ):     278.7 ms ±   2.7 ms    [User: 276.5 ms, System: 0.8 ms]
+  Range (min … max):   272.2 ms … 282.1 ms    10 runs
  
   Warning: Statistical outliers were detected. Consider re-running this benchmark on a quiet system without any interferences from other programs. It might help to use the '--warmup' or '--prepare' options.
  
-Benchmark 2: target/release/recursive-rust
-  Time (mean ± σ):     752.3 µs ±  52.6 µs    [User: 303.0 µs, System: 272.8 µs]
-  Range (min … max):   681.2 µs … 1588.8 µs    2978 runs
+Benchmark 2: target/release/store-load-rust
+  Time (mean ± σ):       3.1 ms ±   0.1 ms    [User: 2.7 ms, System: 0.3 ms]
+  Range (min … max):     3.0 ms …   4.1 ms    948 runs
  
-  Warning: The first benchmarking run for this command was significantly slower than the rest (1.0 ms). This could be caused by (filesystem) caches that were not filled until after the first run. You are already using the '--warmup' option which helps to fill these caches before the actual benchmark. You can either try to increase the warmup count further or re-run this benchmark on a quiet system in case it was a random outlier. Alternatively, consider using the '--prepare' option to clear the caches before each timing run.
+  Warning: Statistical outliers were detected. Consider re-running this benchmark on a quiet system without any interferences from other programs. It might help to use the '--warmup' or '--prepare' options.
  
 Summary
-  target/release/recursive-rust ran
-    1.04 ± 0.09 times faster than ./recursive-mojo
+  target/release/store-load-rust ran
+   89.33 ± 2.91 times faster than ./store-load-mojo
 ```
 
-## Example disassembly for my machine
+## Example output disassembly for my machine
 
-- [Mojo](./disasm/recursive-mojo.txt)
-- [Rust](./disasm/recursive-rust.txt)
-- [Rust using Vec::with_capacity()](./disasm/recursive-rust-vec_with_capacity.txt)
-- [Rust min sized binary](./disasm/recursive-rust-no_main.txt)
+- [Mojo](./disasm/store-load-mojo.txt)
+- [Rust](./disasm/store-load-rust.txt)

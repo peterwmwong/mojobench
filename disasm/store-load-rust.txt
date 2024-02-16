@@ -1,0 +1,17 @@
+
+target/release/store-load-rust:	file format mach-o arm64
+
+Disassembly of section __TEXT,__text:
+
+0000000100003f44 <_main>:
+100003f44: d10043ff    	sub	sp, sp, #16
+100003f48: 5292cfe8    	mov	w8, #38527
+100003f4c: 72a01308    	movk	w8, #152, lsl #16
+100003f50: 52800049    	mov	w9, #2
+100003f54: 910023ea    	add	x10, sp, #8
+100003f58: f90007e9    	str	x9, [sp, #8]
+100003f5c: 71000508    	subs	w8, w8, #1
+100003f60: 54ffffc1    	b.ne	0x100003f58 <_main+0x14>
+100003f64: d2800000    	mov	x0, #0
+100003f68: 910043ff    	add	sp, sp, #16
+100003f6c: d65f03c0    	ret
